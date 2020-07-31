@@ -158,3 +158,6 @@ dist
 
 types
 build
+.adminbro
+
+example-app/cypress/videos

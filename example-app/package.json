@@ -1,0 +1,24 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "ts-node": "^8.10.2",
+    "cypress": "^4.11.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@admin-bro/core": "^3.0.0-beta.2",
+    "@admin-bro/express": "^3.0.0-beta.1",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.1"
+  }
+}
