@@ -1,9 +1,10 @@
 {
-  "name": "@admin-bro/koa",
+  "name": "@admin-bro/extension",
   "version": "1.0.0",
   "main": "build/index.js",
   "types": "types/index.d.ts",
-  "repository": "git@github.com:SoftwareBrothers/admin-bro-koa.git",
+  "private": true,
+  "repository": "git@github.com:SoftwareBrothers/admin-bro-extension-template.git",
   "license": "MIT",
   "scripts": {
     "release": "semantic-release",
@@ -16,10 +17,10 @@
     }
   },
   "peerDependencies": {
-    "@admin-bro/core": ">=3.0.0-beta.3"
+    "@admin-bro/core": ">=3.0.0-beta.4"
   },
   "devDependencies": {
-    "@admin-bro/core": ">=3.0.0-beta.3",
+    "@admin-bro/core": ">=3.0.0-beta.4",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/git": "^9.0.0",
