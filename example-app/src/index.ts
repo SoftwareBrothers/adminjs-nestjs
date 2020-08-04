@@ -1,5 +1,5 @@
 import express from 'express'
-import AdminBro from '@admin-bro/core'
+import AdminBro from 'admin-bro'
 import { buildRouter } from '@admin-bro/express'
 
 const PORT = 3000

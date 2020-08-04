@@ -19,7 +19,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@admin-bro/core": "^3.0.0-beta.4",
+    "admin-bro": "^3.0.0-beta.7",
     "@admin-bro/express": "^3.0.0-beta.1",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
