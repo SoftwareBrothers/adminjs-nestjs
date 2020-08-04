@@ -1,6 +1,6 @@
 {
   "name": "@admin-bro/extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/index.js",
   "types": "types/index.d.ts",
   "private": true,
