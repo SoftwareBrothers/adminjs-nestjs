@@ -1,10 +1,10 @@
 {
-  "name": "@admin-bro/extension",
-  "version": "1.0.1",
+  "name": "@admin-bro/nestjs",
+  "version": "0.0.1",
   "main": "build/index.js",
   "types": "types/index.d.ts",
   "private": true,
-  "repository": "git@github.com:SoftwareBrothers/admin-bro-extension-template.git",
+  "repository": "git@github.com:SoftwareBrothers/admin-bro-nestjs.git",
   "license": "MIT",
   "scripts": {
     "release": "semantic-release",
@@ -20,21 +20,29 @@
     "admin-bro": ">=3.0.0-beta.7"
   },
   "devDependencies": {
-    "admin-bro": ">=3.0.0-beta.7",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
+    "admin-bro": ">=3.0.0-beta.7",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-jsdoc": "^25.4.2",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
     "husky": "^4.2.5",
     "semantic-release": "^17.0.7",
     "semantic-release-slack-bot": "^1.6.2",
     "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.4.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3"
   }
 }

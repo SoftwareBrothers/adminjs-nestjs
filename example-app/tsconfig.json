@@ -1,20 +1,29 @@
 {
   "compilerOptions": {
-      "outDir": "./build",
-      "target": "es2017",
-      "esModuleInterop": true,
-      "jsx": "react",
-      "strictNullChecks": true,
-      "strictPropertyInitialization": true,
-      "strictFunctionTypes": true,
-      "strictBindCallApply": true,
-      "noImplicitThis": true,
-      "moduleResolution": "node",
-      "module": "commonjs",
-      "types": ["cypress"]
+    "outDir": "./build",
+    "target": "es2017",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "types": [
+      "cypress"
+    ],
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "incremental": true
   },
   "include": [
-      "./src/**/*",
-      "./cypress/**/*"
+    "./src/**/*",
+    "./cypress/**/*"
   ],
 }
