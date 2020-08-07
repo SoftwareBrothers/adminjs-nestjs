@@ -6,9 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
-    "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/example-app/src/main.js\"",
     "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/main.js\"",
     "start:prod": "node dist/main.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./test",
@@ -34,6 +33,7 @@
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.5",
     "@types/supertest": "^2.0.8",
+    "cypress": "^4.11.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "supertest": "^4.0.2",

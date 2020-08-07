@@ -1,5 +1,1 @@
-
-@Module
-class AdminModule {
-
-}
+export * from './admin.module';
