@@ -1,1 +1,2 @@
 export const ADMIN_BRO_TOKEN = 'ADMIN_BRO_TOKEN';
+export const CONFIG_TOKEN = 'CONFIG_TOKEN';
