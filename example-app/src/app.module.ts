@@ -27,7 +27,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
           ],
         },
         auth: {
-          authenticate: async () => new Promise(() => ({ email: 'mordeczka' })),
+          authenticate: async (email, password) => Promise.resolve({ test: 'test' }),
           cookieName: 'test',
           cookiePassword: 'testPass',
         },

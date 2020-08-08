@@ -33,9 +33,8 @@ export class AdminModule implements OnModuleInit {
     }
   }
 
-  public async onModuleInit() {
+  public onModuleInit() {
     const admin = new AdminBro(this.adminModuleOptions.adminBroOptions);
-    await admin.initialize();
 
     const { httpAdapter } = this.httpAdapterHost;
     this.loader.register(admin, httpAdapter, { 
