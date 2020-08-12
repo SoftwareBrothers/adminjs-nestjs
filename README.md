@@ -1,4 +1,4 @@
-# Koa plugin for AdminBro
+# NestJS plugin for AdminBro
 
 This is an official [AdminBro](https://github.com/SoftwareBrothers/admin-bro) plugin which integrates it to [nestjs](https://nestjs.com) framework.
 
