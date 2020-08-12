@@ -41,5 +41,6 @@ export class AdminModule implements OnModuleInit {
       ...this.adminModuleOptions, 
       adminBroOptions: admin.options,
     });
+    admin.watch()
   }
 }
