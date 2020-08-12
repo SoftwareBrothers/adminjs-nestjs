@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "build/index.js",
   "types": "types/index.d.ts",
-  "private": true,
+  "private": false,
   "repository": "git@github.com:SoftwareBrothers/admin-bro-nestjs.git",
   "license": "MIT",
   "scripts": {
