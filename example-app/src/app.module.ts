@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule, getModelToken } from '@nestjs/mongoose';
+import { AdminModule } from '@admin-bro/nestjs';
 import { Model } from 'mongoose';
-
-import { AdminModule } from '../../src/index';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -27,7 +26,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
           ],
         },
         auth: {
-          authenticate: async (email, password) => Promise.resolve({ test: 'test' }),
+          authenticate: async (email, password) => Promise.resolve({ email: 'test' }),
           cookieName: 'test',
           cookiePassword: 'testPass',
         },
