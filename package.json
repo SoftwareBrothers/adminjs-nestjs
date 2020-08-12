@@ -1,6 +1,6 @@
 {
   "name": "@admin-bro/nestjs",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "main": "build/index.js",
   "types": "types/index.d.ts",
   "private": false,
