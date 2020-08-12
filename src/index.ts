@@ -10,7 +10,7 @@
  * 1. First of all, install the AdminBro along with the module:
  * 
  * ```
- * yarn add admin-bro @admin-bro/nestjs
+ * yarn add admin-bro @admin-bro/nestjs @admin-bro/express
  * ```
  * 
  * 2. Once the installation process is complete, we can import the AdminBroModule
