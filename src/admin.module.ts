@@ -18,8 +18,20 @@ export class AdminModule implements OnModuleInit {
     @Inject(CONFIG_TOKEN)
     private readonly adminModuleOptions: AdminModuleOptions,
   ) {}
+
+  public static createAdmin(options: AdminModuleOptions): DynamicModule {
+    return {
+      module: AdminModule,
+      providers: [
+        {
+          provide: CONFIG_TOKEN,
+          useValue: options,
+        },
+      ],
+    }
+  }
   
-  public static createAdminModule(options: AdminModuleFactory): DynamicModule {
+  public static createAdminAsync(options: AdminModuleFactory): DynamicModule {
     return {
       imports: options.imports,
       module: AdminModule,
@@ -41,6 +53,5 @@ export class AdminModule implements OnModuleInit {
       ...this.adminModuleOptions, 
       adminBroOptions: admin.options,
     });
-    admin.watch()
   }
 }

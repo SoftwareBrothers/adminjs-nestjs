@@ -1,4 +1,4 @@
-import { AdminBroOptions } from 'admin-bro';
+import { AdminBroOptions, CurrentAdmin } from 'admin-bro';
 import { SessionOptions } from 'express-session';
 
 import { ExpressFormidableOptions } from './express-formidable-options.interface';
@@ -6,7 +6,7 @@ import { ExpressFormidableOptions } from './express-formidable-options.interface
 export interface AdminModuleOptions {
   adminBroOptions: AdminBroOptions,
   auth?: {
-    authenticate: Function,
+    authenticate: (email: string, password: string) => Promise<CurrentAdmin>,
     cookiePassword: string,
     cookieName: string,
   }

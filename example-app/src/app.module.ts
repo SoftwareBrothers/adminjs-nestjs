@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule, getModelToken } from '@nestjs/mongoose';
-import { AdminModule } from '@admin-bro/nestjs';
 import { Model } from 'mongoose';
+
+import { AdminModule } from '../../src'; // lib
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,7 +12,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/nest'),
-    AdminModule.createAdminModule({
+    AdminModule.createAdminAsync({
       imports: [
         MongooseSchemasModule,
       ],
