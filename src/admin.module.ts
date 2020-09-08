@@ -66,7 +66,7 @@ export class AdminModule implements OnModuleInit {
   }
   
   /**
-   * Creates admin in an synchronous way
+   * Creates admin in a synchronous way
    * 
    * @param {AdminModuleFactory} options
    * @memberof module:@admin-bro/nestjs~AdminModule
