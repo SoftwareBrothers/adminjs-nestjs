@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule, getModelToken } from '@nestjs/mongoose';
-import mongoose, { Model } from 'mongoose';
+import { Model } from 'mongoose';
 
-import { AdminModule } from '../../src/index';
+import { AdminModule } from '../../src'; // lib
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,7 +12,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/nest'),
-    AdminModule.createAdminModule({
+    AdminModule.createAdminAsync({
       imports: [
         MongooseSchemasModule,
       ],
@@ -27,7 +27,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
           ],
         },
         auth: {
-          authenticate: async (email, password) => Promise.resolve({ test: 'test' }),
+          authenticate: async (email, password) => Promise.resolve({ email: 'test' }),
           cookieName: 'test',
           cookiePassword: 'testPass',
         },

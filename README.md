@@ -1,51 +1,18 @@
-# AdminBro Addon template
+# NestJS plugin for AdminBro
 
-This an AdminBro addon template repository. You may use it if you want to create
+This is an official [AdminBro](https://github.com/SoftwareBrothers/admin-bro) plugin which integrates it to [nestjs](https://nestjs.com) framework.
 
-* AdminBro plugin
-* AdminBro adapter
-* AdminBro feature
+## AdminBro
 
-## What is inside
+AdminBro is an automatic admin interface which can be plugged into your application. You, as a developer, provide database models (like posts, comments, stores, products or whatever else your application uses), and AdminBro generates UI which allows you (or other trusted users) to manage content.
 
-It is a typescript repository with:
+Check out the example application with mongo and postgres models here: https://admin-bro-example-app-staging.herokuapp.com/admin
 
-* TypeScript
-* linter with semantic commits (ensures the same style across AdminBro packages)
-* semantic-release
-* github actions
-* example application with cypress
+Or visit [AdminBro](https://github.com/SoftwareBrothers/admin-bro) github page.
 
-What is missing:
-* cypress run in the CI which is an optional. You can take a look at admin-bro/core repository to see how to build it.
+## Usage
 
-## How to use it
-
-In order to start working on an AdminBro feature/plugin/adapter follow this steps:
-
-1. fork this repository
-2. Make sure it uses the latest versions of the packages
-2. rename package in package.json
-3. add env variables github settings:
-- SLACK_WEBHOOK
-- NPM_TOKEN
-4. in the root folder:
-- `yarn install`
--  `yarn link` (registers package in `linked packages` repository)
-5. cd example-app
-- `yarn install`
-- `yarn add NAME_OF_YOUR_PACKAGE`
-- `yarn link NAME_OF_YOUR_PACKAGE`
-6. then in one terminal in the root folder run:
-- `yarn build --watch`
-7. in the second terminal in example app:
-- `yarn dev`
-
-You can read more about package linking in [yarn link documentation](https://classic.yarnpkg.com/en/docs/cli/link/)
-
-## Publishing to NPM
-
-package has semantic-release configured, but it don't upload build to NPM because of `private: true` set in package.json. In order to trigger automatic releases simply remove this line.
+To see example usage see the [example-app](https://github.com/SoftwareBrothers/admin-bro-nestjs/tree/master/example-app) or visit the [Nestjs section under AdminBro project page](https://softwarebrothers.github.io/admin-bro-dev/module-admin-bro-nest.html)
 
 ## License
 

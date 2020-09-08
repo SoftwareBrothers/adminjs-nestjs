@@ -6,10 +6,6 @@
     "jest": true
   },
   "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "example-app/tsconfig.json",
-    "sourceType": "module"
-  },
   "plugins": [
     "@typescript-eslint",
     "prefer-arrow",
@@ -21,7 +17,6 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:jest/recommended"
   ],
   "settings": {
@@ -174,7 +169,6 @@
       "error",
       "always-multiline"
     ],
-    "@typescript-eslint/prefer-readonly": "error",
     "prefer-arrow/prefer-arrow-functions": "error",
     "spaced-comment": [
       "error",
@@ -201,6 +195,22 @@
       "rules": {
         "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.js"
+      ],
+      "rules": {
+        "spaced-comment": "off"
+      }
+    },
+    {
+      "files": [
+        "*/cypress/**/*.spec.ts"
+      ],
+      "rules": {
+        "jest/expect-expect": "off"
       }
     }
   ]
