@@ -1,7 +1,9 @@
 /**
- * @module:@admin-bro/nestjs
+ * @module @admin-bro/nestjs
+ * @subcategory Plugins
+ * @section modules
  * 
- * @description
+ * @classdesc
  * This is an official plugin which allows you to render AdminBro in [NestJS
  * framework](https://nestjs.com/)
  * 
@@ -36,7 +38,7 @@
  * import { Module } from '@nestjs/common';
  * import { AdminModule } from '@admin-bro/nestjs';
  * 
- * @Module({
+ * \@Module({
  *   imports: [
  *     AdminModule.createAdmin({
  *        rootPath: '/admin',
@@ -67,7 +69,7 @@
  * 
  * AdminBro.registerAdapter({ Database, Resource })
  * 
- * @Module({
+ * \@Module({
  *   imports: [
  *     // you will have to change connection data of course :)
  *     TypeOrmModule.forRoot({
@@ -124,8 +126,9 @@
  * 
  * For example:
  * - we have MongooseSchemasModule which defines Admin model and exports it:
+ * 
  * ```
- * @Module({
+ * \@Module({
  *  imports: [
  *    MongooseModule.forFeature([{ name: 'Admin', schema: AdminSchema }]),
  *  ],
@@ -135,7 +138,7 @@
  * ```
  * - we want to use Admin model in admin-bro panel, to be displayed as the resource
  * ```
- * @Module({
+ * \@Module({
  *    imports: [
  *      MongooseModule.forRoot('mongodb://localhost:27017/test'),
  *      AdminModule.createAdminAsync({

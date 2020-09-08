@@ -9,7 +9,8 @@
   "scripts": {
     "release": "semantic-release",
     "build": "tsc",
-    "lint": "eslint './src/**/*' './example-app/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock'"
+    "lint": "eslint './src/**/*' './example-app/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock'",
+    "check:all": "yarn lint && yarn build"
   },
   "husky": {
     "hooks": {
