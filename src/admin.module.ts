@@ -31,7 +31,7 @@ export class AdminModule implements OnModuleInit {
   ) {}
 
   /**
-   * Creates admin in an synchronous way
+   * Creates admin in a synchronous way
    * 
    * @param {AdminModuleOptions} options
    * @memberof module:@admin-bro/nestjs~AdminModule
@@ -66,7 +66,7 @@ export class AdminModule implements OnModuleInit {
   }
   
   /**
-   * Creates admin in a synchronous way
+   * Creates admin in an asynchronous way
    * 
    * @param {AdminModuleFactory} options
    * @memberof module:@admin-bro/nestjs~AdminModule
@@ -112,7 +112,7 @@ export class AdminModule implements OnModuleInit {
   }
 
   /**
-   * Initiates the module
+   * Applies given options to AdminBro and initializes it
    */
   public onModuleInit() {
     const admin = new AdminBro(this.adminModuleOptions.adminBroOptions);

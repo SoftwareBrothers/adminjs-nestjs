@@ -15,22 +15,22 @@ export type AdminModuleOptions = {
    */
   adminBroOptions: AdminBroOptions,
   /**
-   * Authentication options
+   * Authentication options. When NOT provided, it will initialize AdminBro without login page and authorization function. 
    */
   auth?: {
     /**
-     * Authenticate method
+     * verifies if given credentials are valid, therefore if user has access to Admin Panel
      */
     authenticate: (email: string, password: string) => Promise<CurrentAdmin>,
     cookiePassword: string,
     cookieName: string,
   }
   /**
-   * Options passed to express formidable (used by AdminBro)
+   * Options passed to express formidable (used only by AdminBro express module)
    */
   formidableOptions?: ExpressFormidableOptions,
   /**
-   * Options passed to express session (used by AdminBro)
+   * Options passed to express session (used only by AdminBro express module)
    * Here you might want to change the store from the default memory store to
    * something more reliable (i.e. database).
    */
