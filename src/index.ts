@@ -41,8 +41,10 @@
  * \@Module({
  *   imports: [
  *     AdminModule.createAdmin({
- *        rootPath: '/admin',
- *        resources: [],
+ *        adminBroOptions: {
+ *          rootPath: '/admin',
+ *          resources: [],
+ *        },
  *     }),
  *   ],
  * })
