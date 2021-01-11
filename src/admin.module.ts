@@ -61,6 +61,10 @@ export class AdminModule implements OnModuleInit {
           provide: CONFIG_TOKEN,
           useValue: options,
         },
+        options.customLoader ? {
+          provide: AbstractLoader,
+          useClass: options.customLoader,
+        } : serveStaticProvider,
       ],
     }
   }

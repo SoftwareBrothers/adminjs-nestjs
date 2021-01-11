@@ -23,24 +23,6 @@ export class ExpressLoader extends AbstractLoader {
     );
     loadPackage('express-formidable', '@admin-bro/nestjs');
 
-    let jsonParser;
-    let urlencodedParser;
-
-    // Nestjs uses bodyParser under the hood which is in conflict with admin-bro setup.
-    // Due to admin-bro-expressjs usage of formidable we have to move body parser in layer tree after admin-bro init.
-    // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
-    if (app && app._router && app._router.stack) {
-      const jsonParserIndex = app._router.stack.findIndex(layer => layer.name === 'jsonParser');
-      if (jsonParserIndex >= 0) {
-        jsonParser = app._router.stack.splice(jsonParserIndex, 1);
-      }
-
-      const urlencodedParserIndex = app._router.stack.findIndex(layer => layer.name === 'urlencodedParser');
-      if (urlencodedParserIndex >= 0) {
-        urlencodedParser = app._router.stack.splice(urlencodedParserIndex, 1);
-      }
-    }
-
     let router;
 
     if ('auth' in options) {
@@ -53,13 +35,52 @@ export class ExpressLoader extends AbstractLoader {
     }
 
     app.use(options.adminBroOptions.rootPath, router);
+    this.reorderRoutes(app, options);980
+  }
 
-    if (jsonParser) {
-      app._router.stack.push(...jsonParser);
-    }
+  private reorderRoutes(app, options) {
+    let jsonParser;
+    let urlencodedParser;
+    let admin;
 
-    if (urlencodedParser) {
-      app._router.stack.push(...urlencodedParser);
+    // Nestjs uses bodyParser under the hood which is in conflict with admin-bro setup.
+    // Due to admin-bro-expressjs usage of formidable we have to move body parser in layer tree after admin-bro init.
+    // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
+    if (app && app._router && app._router.stack) {
+      const jsonParserIndex = app._router.stack.findIndex(
+        (layer: { name: string }) => layer.name === 'jsonParser'
+      );
+      if (jsonParserIndex >= 0) {
+        jsonParser = app._router.stack.splice(jsonParserIndex, 1);
+      }
+
+      const urlencodedParserIndex = app._router.stack.findIndex(
+        (layer: { name: string }) => layer.name === 'urlencodedParser'
+      );
+      if (urlencodedParserIndex >= 0) {
+        urlencodedParser = app._router.stack.splice(urlencodedParserIndex, 1);
+      }
+
+      const adminIndex = app._router.stack.findIndex((layer: { regexp: RegExp }) =>
+        layer.regexp.toString().includes(options.adminBroOptions.rootPath),
+      )
+      if (adminIndex >= 0) {
+        admin = app._router.stack.splice(adminIndex, 1)
+      }
+
+      // if admin-bro-nestjs didn't reorder the middleware
+      // the body parser would have come after corsMiddleware
+      const corsIndex = app._router.stack.findIndex(
+        (layer: { name: string }) => layer.name === 'corsMiddleware',
+      )
+
+      app._router.stack.splice(
+        corsIndex >= 0 ? corsIndex + 1 : app._router.stack.length,
+        0,
+        ...admin,
+        ...jsonParser,
+        ...urlencodedParser,
+      )
     }
   }
 }
