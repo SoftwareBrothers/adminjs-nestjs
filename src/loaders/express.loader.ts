@@ -43,6 +43,7 @@ export class ExpressLoader extends AbstractLoader {
     let urlencodedParser;
     let admin;
 
+
     // Nestjs uses bodyParser under the hood which is in conflict with admin-bro setup.
     // Due to admin-bro-expressjs usage of formidable we have to move body parser in layer tree after admin-bro init.
     // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
@@ -74,8 +75,16 @@ export class ExpressLoader extends AbstractLoader {
         (layer: { name: string }) => layer.name === 'corsMiddleware',
       )
 
+      // in other case if there is no corsIndex we go after expressInit, because right after that
+      // there are nest endopoints.
+      const expressInitIndex = app._router.stack.findIndex(
+        (layer: { name: string }) => layer.name === 'expressInit',
+      )
+
+      const initIndex = (corsIndex >= 0 ? corsIndex : expressInitIndex) + 1;
+
       app._router.stack.splice(
-        corsIndex >= 0 ? corsIndex + 1 : app._router.stack.length,
+        initIndex,
         0,
         ...admin,
         ...jsonParser,

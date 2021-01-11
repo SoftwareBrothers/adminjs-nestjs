@@ -1,7 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
-import mongoose from 'mongoose';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { IsString } from 'class-validator';
+import { Expose } from 'class-transformer';
 
 import { AppService } from './app.service';
+
+export class Hello {
+  @Expose()
+  @IsString()
+  public hello!: string
+}
 
 @Controller()
 export class AppController {
@@ -10,5 +17,10 @@ export class AppController {
   @Get()
   public getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Post()
+  public postHello(@Body() testBody: Hello): string {
+    return testBody.hello;
   }
 }
