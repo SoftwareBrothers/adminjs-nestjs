@@ -35,7 +35,7 @@ export class ExpressLoader extends AbstractLoader {
     }
 
     app.use(options.adminBroOptions.rootPath, router);
-    this.reorderRoutes(app, options);980
+    this.reorderRoutes(app, options);
   }
 
   private reorderRoutes(app, options) {
