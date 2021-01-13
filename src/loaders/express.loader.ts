@@ -35,7 +35,7 @@ export class ExpressLoader extends AbstractLoader {
     }
 
     app.use(options.adminBroOptions.rootPath, router);
-    this.reorderRoutes(app, options);980
+    this.reorderRoutes(app, options);
   }
 
   private reorderRoutes(app, options) {
@@ -75,7 +75,7 @@ export class ExpressLoader extends AbstractLoader {
       )
 
       // in other case if there is no corsIndex we go after expressInit, because right after that
-      // there are nest endopoints.
+      // there are nest endpoints.
       const expressInitIndex = app._router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'expressInit',
       )

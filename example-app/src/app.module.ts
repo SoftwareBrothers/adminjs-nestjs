@@ -6,6 +6,7 @@ import { AdminModule } from '../../src'; // lib
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ExpressCustomLoader } from './express-custom.loader';
 import { Admin } from './mongoose/admin-model';
 import { MongooseSchemasModule } from './mongoose/mongoose.module';
 
@@ -32,6 +33,7 @@ import { MongooseSchemasModule } from './mongoose/mongoose.module';
           cookiePassword: 'testPass',
         },
       }),
+      customLoader: ExpressCustomLoader,
     }),
     MongooseSchemasModule,
   ],

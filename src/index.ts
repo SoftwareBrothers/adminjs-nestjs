@@ -41,9 +41,11 @@
  * \@Module({
  *   imports: [
  *     AdminModule.createAdmin({
- *        rootPath: '/admin',
- *        resources: [],
- *     }),
+ *       adminBroOptions: {
+ *         rootPath: '/admin',
+ *         resources: [],
+ *       }),
+ *     },
  *   ],
  * })
  * export class AppModule {}
@@ -163,9 +165,56 @@
  * export class AppModule { }
  * ```
  * 
+ * ## Custom loader
+ * In most cases default plugins for admin-bro are enough for functionality we need, but in rare ocasions 
+ * we want to customize routing, or achieve different logic after login and this cases can be achieved only
+ * by providing own plugin implementation. Because @admin-bro/nestjs under the hood uses plugin for express (@admin-bro/express)
+ * it would require basically copying whole nestjs plugin and express plugin to own project to put any changes.
+ * Instead there is optional parameter to put your custom loader if you don't want to use official one for any reason.
+ * Your custom loader must extend AbstractLoader.
+ * 
+ * ```
+ * \@Injectable()
+ * export class CustomLoader extends AbstractLoader {
+ *   public register(
+ *     admin: AdminBro,
+ *     httpAdapter: AbstractHttpAdapter,
+ *     options: AdminModuleOptions,
+ *   ) {}
+ * }
+ * ```
+ * 
+ * And then in module:
+ * 
+ * ```
+ * AdminModule.createAdmin({
+ *     adminBroOptions: {
+ *       //...
+ *     },
+ *     auth: {
+ *       //...
+ *     },
+ *     customLoader: CustomLoader,
+ * }),
+ * ```
+ * 
+ * or if you using more advanced techniques:
+ * 
+ * ```
+ * AdminModule.createAdmin({
+ *     useFactory: () => {}
+ *     customLoader: CustomLoader,
+ * }), 
+ * ```
+ * 
+ * ## Example
  * There is a working example [here](https://github.com/SoftwareBrothers/admin-bro-nestjs/tree/master/example-app)
  */
 import * as NestJSPlugin from './admin.module'
 
 export * from './admin.module';
-export default NestJSPlugin
+export default NestJSPlugin;
+export * from './interfaces/admin-module-factory.interface';
+export * from './interfaces/admin-module-options.interface';
+export * from './interfaces/custom-loader.interface';
+export * from './loaders/abstract.loader';
