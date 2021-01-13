@@ -7,6 +7,7 @@ import { CONFIG_TOKEN } from './token.constants'
 import { AbstractLoader } from './loaders/abstract.loader'
 import { AdminModuleOptions } from './interfaces/admin-module-options.interface'
 import { AdminModuleFactory } from './interfaces/admin-module-factory.interface'
+import { CustomLoader } from './interfaces/custom-loader.interface'
 
 /**
  * Nest module which is responsible for an AdminBro integration
@@ -19,9 +20,7 @@ import { AdminModuleFactory } from './interfaces/admin-module-factory.interface'
  * @memberof module:@admin-bro/nestjs
  */
 // This is needed by JSDoc which cannot parse this statement
-@Module({
-  providers: [serveStaticProvider],
-})
+@Module({})
 export class AdminModule implements OnModuleInit {
   constructor(
     private readonly httpAdapterHost: HttpAdapterHost,
@@ -53,7 +52,7 @@ export class AdminModule implements OnModuleInit {
    * 
    */
   // This is needed by JSDoc which cannot parse this statement
-  public static createAdmin(options: AdminModuleOptions): DynamicModule {
+  public static createAdmin(options: AdminModuleOptions & CustomLoader): DynamicModule {
     return {
       module: AdminModule,
       providers: [
@@ -101,7 +100,7 @@ export class AdminModule implements OnModuleInit {
    *  })
    *  export class AppModule { }
    */
-  public static createAdminAsync(options: AdminModuleFactory): DynamicModule {
+  public static createAdminAsync(options: AdminModuleFactory & CustomLoader): DynamicModule {
     return {
       imports: options.imports,
       module: AdminModule,
@@ -111,6 +110,10 @@ export class AdminModule implements OnModuleInit {
           useFactory: options.useFactory,
           inject: options.inject,
         },
+        options.customLoader ? {
+          provide: AbstractLoader,
+          useClass: options.customLoader,
+        } : serveStaticProvider,
       ],
     }
   }

@@ -38,9 +38,4 @@ export type AdminModuleOptions = {
    * something more reliable (i.e. database).
    */
   sessionOptions?: SessionOptions,
-  /**
-   * In order not to use default Express (@admin-bro/express) or Fastify (not yet implemented) loader
-   * you can provide your own implementation of Loader that plugs in AdminBro.
-   */
-  customLoader?: Type<AbstractLoader>,
 }
