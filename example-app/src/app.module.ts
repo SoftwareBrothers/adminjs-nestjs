@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule, getModelToken } from '@nestjs/mongoose';
+import AdminBro from 'admin-bro';
+import AdminBroMongoose from '@admin-bro/mongoose';
 import { Model } from 'mongoose';
 
 import { AdminModule } from '../../src'; // lib
@@ -9,6 +11,8 @@ import { AppService } from './app.service';
 import { ExpressCustomLoader } from './express-custom.loader';
 import { Admin } from './mongoose/admin-model';
 import { MongooseSchemasModule } from './mongoose/mongoose.module';
+
+AdminBro.registerAdapter(AdminBroMongoose);
 
 @Module({
   imports: [

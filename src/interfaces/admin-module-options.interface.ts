@@ -1,8 +1,5 @@
-import { Type } from '@nestjs/common';
 import { AdminBroOptions, CurrentAdmin } from 'admin-bro';
 import { SessionOptions } from 'express-session';
-
-import { AbstractLoader } from '../loaders/abstract.loader';
 
 import { ExpressFormidableOptions } from './express-formidable-options.interface';
 
@@ -38,4 +35,9 @@ export type AdminModuleOptions = {
    * something more reliable (i.e. database).
    */
   sessionOptions?: SessionOptions,
+  /**
+   * Flag indicating if admin-bro should be initialized. Helpful in cases like turning off admin for tests.
+   * Default is true.
+   */
+  shouldBeInitialized?: boolean,
 }

@@ -34,11 +34,17 @@ export class ExpressLoader extends AbstractLoader {
       router = adminBroExpressjs.buildRouter(admin, undefined, options.formidableOptions);
     }
 
-    app.use(options.adminBroOptions.rootPath, router);
-    this.reorderRoutes(app, options);
+    // This named function is there on purpose. 
+    // It names layer in main router with the name of the function, which helps localize
+    // admin layer in reorderRoutes() step.
+    // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
+    app.use(options.adminBroOptions.rootPath, function admin(req, res, next) {
+      return router(req, res, next);
+    });
+    this.reorderRoutes(app);
   }
 
-  private reorderRoutes(app, options) {
+  private reorderRoutes(app) {
     let jsonParser;
     let urlencodedParser;
     let admin;
@@ -61,9 +67,9 @@ export class ExpressLoader extends AbstractLoader {
         urlencodedParser = app._router.stack.splice(urlencodedParserIndex, 1);
       }
 
-      const adminIndex = app._router.stack.findIndex((layer: { regexp: RegExp }) =>
-        layer.regexp.toString().includes(options.adminBroOptions.rootPath),
-      )
+      const adminIndex = app._router.stack.findIndex(
+        (layer: { name: string }) => layer.name === 'admin'
+      );
       if (adminIndex >= 0) {
         admin = app._router.stack.splice(adminIndex, 1)
       }

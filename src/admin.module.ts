@@ -122,6 +122,10 @@ export class AdminModule implements OnModuleInit {
    * Applies given options to AdminBro and initializes it
    */
   public onModuleInit() {
+    if ('shouldBeInitialized' in this.adminModuleOptions && !this.adminModuleOptions.shouldBeInitialized) {
+      return;
+    }
+
     const admin = new AdminBro(this.adminModuleOptions.adminBroOptions);
 
     const { httpAdapter } = this.httpAdapterHost;
