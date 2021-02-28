@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule, getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { AdminModule } from '../../src'; // lib
+import { AdminModule } from '../../../src'; // lib
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
