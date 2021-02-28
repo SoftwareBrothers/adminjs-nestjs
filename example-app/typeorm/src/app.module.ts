@@ -11,16 +11,16 @@ import { ProductEntity } from './product/product.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-        type: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'postgres',
-        password: 'password',
-        database: 'database_test',
-        entities: [UserEntity, ProductEntity],
-        synchronize: true,
-        logging: false,
-      }),
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'password',
+      database: 'database_test',
+      entities: [UserEntity, ProductEntity],
+      synchronize: true,
+      logging: false,
+    }),
     AdminModule.createAdminAsync({
       inject: [Connection],
       useFactory: (conn: Connection) => ({
