@@ -12,7 +12,7 @@ Or visit [AdminBro](https://github.com/SoftwareBrothers/admin-bro) github page.
 
 ## Usage
 
-To see example usage see the [example-app](https://github.com/SoftwareBrothers/admin-bro-nestjs/tree/master/example-app) or visit the [Nestjs section under AdminBro project page](https://softwarebrothers.github.io/admin-bro-dev/module-admin-bro-nest.html)
+To see example usage see the [example-app](https://github.com/SoftwareBrothers/admin-bro-nestjs/tree/master/example-app) or visit the [Nestjs section under AdminBro project page](https://adminbro.com/module-@admin-bro_nestjs.html)
 
 ## License
 
