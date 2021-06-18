@@ -1,25 +1,25 @@
 /**
- * @module @admin-bro/nestjs
+ * @module @adminjs/nestjs
  * @subcategory Plugins
  * @section modules
  * 
  * @classdesc
- * This is an official plugin which allows you to render AdminBro in [NestJS
+ * This is an official plugin which allows you to render AdminJS in [NestJS
  * framework](https://nestjs.com/)
  * 
  * ## Installation
  * 
- * 1. First of all, install the AdminBro along with the module:
+ * 1. First of all, install the AdminJS along with the module:
  * 
  * ```
- * yarn add admin-bro @admin-bro/nestjs
+ * yarn add adminjs @adminjs/nestjs
  * ```
  * 
  * ### Express:
- * You have to additionally add admin-bro express plugin along with packages it's using, express and express formidable:
+ * You have to additionally add adminjs express plugin along with packages it's using, express and express formidable:
  * 
  * ```
- * yarn add express @admin-bro/express express-formidable
+ * yarn add express @adminjs/express express-formidable
  * ```
  * 
  * If you are passing `authenticate` object you have to also add express-session:
@@ -36,12 +36,12 @@
  * 
  * ```
  * import { Module } from '@nestjs/common';
- * import { AdminModule } from '@admin-bro/nestjs';
+ * import { AdminModule } from '@adminjs/nestjs';
  * 
  * \@Module({
  *   imports: [
  *     AdminModule.createAdmin({
- *       adminBroOptions: {
+ *       adminJsOptions: {
  *         rootPath: '/admin',
  *         resources: [],
  *       }),
@@ -51,25 +51,25 @@
  * export class AppModule {}
  * ```
  * 
- * Then enter `/admin` path in your browser and you should see the AdminBro.
+ * Then enter `/admin` path in your browser and you should see the AdminJS.
  * 
  * 3. Passing resources
  * 
  * Let say you use @nestjs/typeorm module, and you have users module.
  * 
- * - you have to install @admin-bro/typeorm adapter
- * - you have to register it in AdminBro (as stated in the docs)
+ * - you have to install @adminjs/typeorm adapter
+ * - you have to register it in AdminJS (as stated in the docs)
  * - and you have to pass it to your options
  * 
  * ```
- * import AdminBro from 'admin-bro';
+ * import AdminJS from 'adminjs';
  * import { Module } from '@nestjs/common';
- * import { AdminModule } from '@admin-bro/nestjs';
- * import { Database, Resource } from '@admin-bro/typeorm'
+ * import { AdminModule } from '@adminjs/nestjs';
+ * import { Database, Resource } from '@adminjs/typeorm'
  * import { TypeOrmModule } from '@nestjs/typeorm';
  * import { UsersModule } from './users/users.module';
  * 
- * AdminBro.registerAdapter({ Database, Resource })
+ * AdminJS.registerAdapter({ Database, Resource })
  * 
  * \@Module({
  *   imports: [
@@ -85,7 +85,7 @@
  *       synchronize: true,
  *     }),
  *     AdminModule.createAdmin({
- *       adminBroOptions: {
+ *       adminJsOptions: {
  *          rootPath: '/admin',
  *          resources: [User],
  *       }
@@ -97,7 +97,7 @@
  * 
  * ## Authentication
  * 
- * Apart from the `adminBroOptions` you can define `auth` settings.
+ * Apart from the `adminJsOptions` you can define `auth` settings.
  * 
  * This is an example which always logs users in, since authenticate method
  * always returns a Promise resolving to {@link CurrentAdmin}. You may
@@ -106,7 +106,7 @@
  * 
  * ```
  * AdminModule.createAdmin({
- *     adminBroOptions: {
+ *     adminJsOptions: {
  *       rootPath: '/admin',
  *       resources: [User],
  *     },
@@ -138,7 +138,7 @@
  * })
  * export class MongooseSchemasModule {} 
  * ```
- * - we want to use Admin model in admin-bro panel, to be displayed as the resource
+ * - we want to use Admin model in adminjs panel, to be displayed as the resource
  * ```
  * \@Module({
  *    imports: [
@@ -151,7 +151,7 @@
  *          getModelToken('Admin'), // using mongoose function to inject dependency
  *        ],
  *        useFactory: (adminModel: Model<Admin>) => ({ // injected dependecy will appear as an argument
- *          adminBroOptions: {
+ *          adminJsOptions: {
  *            rootPath: '/admin',
  *            resources: [
  *              { resource: adminModel },
@@ -166,9 +166,9 @@
  * ```
  * 
  * ## Custom loader
- * In most cases default plugins for admin-bro are enough for functionality we need, but in rare ocasions 
+ * In most cases default plugins for adminjs are enough for functionality we need, but in rare ocasions 
  * we want to customize routing, or achieve different logic after login and this cases can be achieved only
- * by providing own plugin implementation. Because @admin-bro/nestjs under the hood uses plugin for express (@admin-bro/express)
+ * by providing own plugin implementation. Because @adminjs/nestjs under the hood uses plugin for express (@adminjs/express)
  * it would require basically copying whole nestjs plugin and express plugin to own project to put any changes.
  * Instead there is optional parameter to put your custom loader if you don't want to use official one for any reason.
  * Your custom loader must extend AbstractLoader.
@@ -177,7 +177,7 @@
  * \@Injectable()
  * export class CustomLoader extends AbstractLoader {
  *   public register(
- *     admin: AdminBro,
+ *     admin: AdminJS,
  *     httpAdapter: AbstractHttpAdapter,
  *     options: AdminModuleOptions,
  *   ) {}
@@ -188,7 +188,7 @@
  * 
  * ```
  * AdminModule.createAdmin({
- *     adminBroOptions: {
+ *     adminJsOptions: {
  *       //...
  *     },
  *     auth: {
@@ -208,7 +208,7 @@
  * ```
  * 
  * ## Example
- * There is a working example [here](https://github.com/SoftwareBrothers/admin-bro-nestjs/tree/master/example-app)
+ * There is a working example [here](https://github.com/SoftwareBrothers/adminjs-nestjs/tree/master/example-app)
  */
 import * as NestJSPlugin from './admin.module'
 

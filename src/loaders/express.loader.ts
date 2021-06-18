@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import AdminBro from 'admin-bro';
+import AdminJS from 'adminjs';
 import { Injectable } from '@nestjs/common';
 import { AbstractHttpAdapter } from '@nestjs/core';
 import { loadPackage } from '@nestjs/common/utils/load-package.util';
@@ -11,34 +11,34 @@ import { AbstractLoader } from './abstract.loader';
 @Injectable()
 export class ExpressLoader extends AbstractLoader {
   public register(
-    admin: AdminBro,
+    admin: AdminJS,
     httpAdapter: AbstractHttpAdapter,
     options: AdminModuleOptions,
   ) {
     const app = httpAdapter.getInstance();
 
-    loadPackage('express', '@admin-bro/nestjs');
-    const adminBroExpressjs = loadPackage('@admin-bro/express', '@admin-bro/nestjs', () =>
-      require('@admin-bro/express')
+    loadPackage('express', '@adminjs/nestjs');
+    const adminJsExpressjs = loadPackage('@adminjs/express', '@adminjs/nestjs', () =>
+      require('@adminjs/express')
     );
-    loadPackage('express-formidable', '@admin-bro/nestjs');
+    loadPackage('express-formidable', '@adminjs/nestjs');
 
     let router;
 
     if ('auth' in options) {
-      loadPackage('express-session', '@admin-bro/nestjs');
-      router = adminBroExpressjs.buildAuthenticatedRouter(
+      loadPackage('express-session', '@adminjs/nestjs');
+      router = adminJsExpressjs.buildAuthenticatedRouter(
         admin, options.auth, undefined, options.sessionOptions, options.formidableOptions
       );
     } else {
-      router = adminBroExpressjs.buildRouter(admin, undefined, options.formidableOptions);
+      router = adminJsExpressjs.buildRouter(admin, undefined, options.formidableOptions);
     }
 
     // This named function is there on purpose. 
     // It names layer in main router with the name of the function, which helps localize
     // admin layer in reorderRoutes() step.
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
-    app.use(options.adminBroOptions.rootPath, function admin(req, res, next) {
+    app.use(options.adminJsOptions.rootPath, function admin(req, res, next) {
       return router(req, res, next);
     });
     this.reorderRoutes(app);
@@ -49,8 +49,8 @@ export class ExpressLoader extends AbstractLoader {
     let urlencodedParser;
     let admin;
 
-    // Nestjs uses bodyParser under the hood which is in conflict with admin-bro setup.
-    // Due to admin-bro-expressjs usage of formidable we have to move body parser in layer tree after admin-bro init.
+    // Nestjs uses bodyParser under the hood which is in conflict with adminjs setup.
+    // Due to adminjs-expressjs usage of formidable we have to move body parser in layer tree after adminjs init.
     // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
     if (app && app._router && app._router.stack) {
       const jsonParserIndex = app._router.stack.findIndex(
@@ -74,7 +74,7 @@ export class ExpressLoader extends AbstractLoader {
         admin = app._router.stack.splice(adminIndex, 1)
       }
 
-      // if admin-bro-nestjs didn't reorder the middleware
+      // if adminjs-nestjs didn't reorder the middleware
       // the body parser would have come after corsMiddleware
       const corsIndex = app._router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'corsMiddleware',
