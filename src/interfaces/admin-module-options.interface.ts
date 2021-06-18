@@ -1,4 +1,4 @@
-import { AdminJsOptions, CurrentAdmin } from 'adminjs';
+import { AdminJSOptions, CurrentAdmin } from 'adminjs';
 import { SessionOptions } from 'express-session';
 
 import { ExpressFormidableOptions } from './express-formidable-options.interface';
@@ -13,7 +13,7 @@ export type AdminModuleOptions = {
   /**
    * Standard AdminJS options
    */
-  adminJsOptions: AdminJsOptions,
+  adminJsOptions: AdminJSOptions,
   /**
    * Authentication options. When NOT provided, it will initialize AdminJS without login page and authorization function. 
    */
