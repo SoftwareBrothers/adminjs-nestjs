@@ -1,4 +1,4 @@
-import AdminBro from 'admin-bro'
+import AdminJS from 'adminjs'
 import { Module, DynamicModule, OnModuleInit, Inject } from '@nestjs/common'
 import { HttpAdapterHost } from '@nestjs/core'
 
@@ -10,14 +10,14 @@ import { AdminModuleFactory } from './interfaces/admin-module-factory.interface'
 import { CustomLoader } from './interfaces/custom-loader.interface'
 
 /**
- * Nest module which is responsible for an AdminBro integration
+ * Nest module which is responsible for an AdminJS integration
  * 
  * @summary Nest Module
  * 
  * @class
- * @name module:@admin-bro/nestjs~AdminModule
+ * @name module:@adminjs/nestjs~AdminModule
  * @alias AdminModule
- * @memberof module:@admin-bro/nestjs
+ * @memberof module:@adminjs/nestjs
  */
 // This is needed by JSDoc which cannot parse this statement
 @Module({})
@@ -33,12 +33,12 @@ export class AdminModule implements OnModuleInit {
    * Creates admin in a synchronous way
    * 
    * @param {AdminModuleOptions} options
-   * @memberof module:@admin-bro/nestjs~AdminModule
+   * @memberof module:@adminjs/nestjs~AdminModule
    * @method
    * @name createAdmin
    * @example
    * import { Module } from '@nestjs/common';
-   * import { AdminModule } from '@admin-bro/nestjs';
+   * import { AdminModule } from '@adminjs/nestjs';
    * 
    * \@Module({
    *   imports: [
@@ -72,7 +72,7 @@ export class AdminModule implements OnModuleInit {
    * Creates admin in an asynchronous way
    * 
    * @param {AdminModuleFactory} options
-   * @memberof module:@admin-bro/nestjs~AdminModule
+   * @memberof module:@adminjs/nestjs~AdminModule
    * @method
    * @name createAdminAsync
    * @example
@@ -87,7 +87,7 @@ export class AdminModule implements OnModuleInit {
    *         getModelToken('Admin'), // using mongoose function to inject dependency
    *       ],
    *       useFactory: (adminModel: Model<Admin>) => ({ // injected dependecy will appear as an argument
-   *         adminBroOptions: {
+   *         adminJsOptions: {
    *           rootPath: '/admin',
    *           resources: [
    *             { resource: adminModel },
@@ -119,19 +119,19 @@ export class AdminModule implements OnModuleInit {
   }
 
   /**
-   * Applies given options to AdminBro and initializes it
+   * Applies given options to AdminJS and initializes it
    */
   public onModuleInit() {
     if ('shouldBeInitialized' in this.adminModuleOptions && !this.adminModuleOptions.shouldBeInitialized) {
       return;
     }
 
-    const admin = new AdminBro(this.adminModuleOptions.adminBroOptions);
+    const admin = new AdminJS(this.adminModuleOptions.adminJsOptions);
 
     const { httpAdapter } = this.httpAdapterHost;
     this.loader.register(admin, httpAdapter, { 
       ...this.adminModuleOptions, 
-      adminBroOptions: admin.options,
+      adminJsOptions: admin.options,
     });
   }
 }

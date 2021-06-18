@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-import AdminBro from 'admin-bro';
+import AdminJS from 'adminjs';
 import { Injectable } from '@nestjs/common';
 import { AbstractHttpAdapter } from '@nestjs/core';
 
@@ -10,7 +10,7 @@ import { ExpressLoader } from '../../src/loaders/express.loader';
 @Injectable()
 export class ExpressCustomLoader extends AbstractLoader {
   public register(
-    admin: AdminBro,
+    admin: AdminJS,
     httpAdapter: AbstractHttpAdapter,
     options: AdminModuleOptions,
   ) {
