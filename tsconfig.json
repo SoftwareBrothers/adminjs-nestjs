@@ -6,6 +6,7 @@
     "jsx": "react",
     "declaration": true,
     "declarationDir": "./types",
+    "skipLibCheck": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "strictFunctionTypes": true,

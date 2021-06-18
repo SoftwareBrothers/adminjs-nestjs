@@ -26,7 +26,7 @@
     "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
-    "adminjs": "^3.3.1",
+    "adminjs": "^5.0.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
