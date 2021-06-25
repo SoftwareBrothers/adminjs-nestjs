@@ -45,9 +45,9 @@ export class ExpressLoader extends AbstractLoader {
   }
 
   private reorderRoutes(app) {
-    let jsonParser;
-    let urlencodedParser;
-    let admin;
+    let jsonParser = [];
+    let urlencodedParser = [];
+    let admin = [];
 
     // Nestjs uses bodyParser under the hood which is in conflict with adminjs setup.
     // Due to adminjs-expressjs usage of formidable we have to move body parser in layer tree after adminjs init.
