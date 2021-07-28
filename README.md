@@ -2,6 +2,8 @@
 
 This is an official [AdminJS](https://github.com/SoftwareBrothers/adminjs) plugin which integrates it to [nestjs](https://nestjs.com) framework.
 
+Version >3.0.0 might not be compatible with Nestjs 7 or lower. If adapter is not working, try downgrading adapter to version 2.*.*
+
 ## AdminJS
 
 AdminJS is an automatic admin interface which can be plugged into your application. You, as a developer, provide database models (like posts, comments, stores, products or whatever else your application uses), and AdminJS generates UI which allows you (or other trusted users) to manage content.
