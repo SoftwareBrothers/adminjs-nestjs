@@ -5,7 +5,7 @@ import { ExpressFormidableOptions } from './express-formidable-options.interface
 
 /**
  * Options passed to nestjs module
- * 
+ *
  * @memberof module:@adminjs/nestjs
  * @alias AdminModuleOptions
  */
@@ -15,13 +15,13 @@ export type AdminModuleOptions = {
    */
   adminJsOptions: AdminJSOptions,
   /**
-   * Authentication options. When NOT provided, it will initialize AdminJS without login page and authorization function. 
+   * Authentication options. When NOT provided, it will initialize AdminJS without login page and authorization function.
    */
   auth?: {
     /**
      * verifies if given credentials are valid, therefore if user has access to Admin Panel
      */
-    authenticate: (email: string, password: string) => Promise<CurrentAdmin>,
+    authenticate: (email: string, password: string) => Promise<CurrentAdmin | null>,
     cookiePassword: string,
     cookieName: string,
   }
