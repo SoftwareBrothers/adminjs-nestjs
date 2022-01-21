@@ -1,0 +1,7 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    command: mongod --port 27017 --bind_ip_all

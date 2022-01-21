@@ -9,7 +9,7 @@
   "scripts": {
     "release": "semantic-release",
     "build": "tsc",
-    "lint": "eslint './src/**/*' './example-app/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock'",
+    "lint": "eslint './src/**/*' './example-app/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock' --ignore-pattern '*.yml'",
     "check:all": "yarn lint && yarn build"
   },
   "husky": {
@@ -18,11 +18,16 @@
     }
   },
   "peerDependencies": {
-    "adminjs": ">=5.0.0"
+    "@nestjs/common": "^8.2.6",
+    "@nestjs/core": "^8.2.6",
+    "adminjs": ">=5.0.0",
+    "rxjs": "^7.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@nestjs/common": "^8.2.6",
+    "@nestjs/core": "^8.2.6",
     "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
@@ -37,15 +42,13 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.2.5",
+    "rxjs": "^7.1.0",
     "semantic-release": "^17.0.7",
     "semantic-release-slack-bot": "^1.6.2",
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.5",
-    "@nestjs/core": "^8.0.5",
     "@types/express-session": "^1.17.0",
-    "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.3"
+    "reflect-metadata": "^0.1.13"
   }
 }
