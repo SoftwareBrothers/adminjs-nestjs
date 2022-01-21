@@ -10,6 +10,5 @@ export abstract class AbstractLoader {
     admin: AdminJS,
     httpAdapter: AbstractHttpAdapter,
     options: AdminModuleOptions,
-
   );
 }
