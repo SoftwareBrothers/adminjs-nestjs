@@ -14,7 +14,7 @@ Or visit [AdminJS](https://github.com/SoftwareBrothers/adminjs) github page.
 
 ## Usage
 
-To see example usage see the [example-app](https://github.com/SoftwareBrothers/adminjs-nestjs/tree/master/example-app) or visit the [Nestjs section under AdminJS project page](https://softwarebrothers.github.io/adminjs-dev/module-adminjs-nest.html)
+To see example usage see the [example-app](https://github.com/SoftwareBrothers/adminjs-nestjs/tree/master/example-app) or visit the [Nestjs section under AdminJS project page](https://softwarebrothers.github.io/adminjs-dev/module-@adminjs_nestjs.html)
 
 ## License
 
