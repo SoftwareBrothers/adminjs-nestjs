@@ -1,6 +1,6 @@
 {
   "name": "@adminjs/nestjs",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "main": "build/index.js",
   "types": "types/index.d.ts",
   "private": false,
