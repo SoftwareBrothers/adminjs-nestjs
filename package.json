@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@nestjs/common": "^8.2.6",
     "@nestjs/core": "^8.2.6",
-    "adminjs": ">=5.0.0",
+    "adminjs": ">=6.0.0",
     "rxjs": "^7.1.0"
   },
   "devDependencies": {
@@ -31,7 +31,7 @@
     "@semantic-release/git": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
-    "adminjs": "^5.0.0",
+    "adminjs": "^6.0.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
