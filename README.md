@@ -18,7 +18,7 @@ To see example usage see the [example-app](https://github.com/SoftwareBrothers/a
 
 ## License
 
-AdminJS is Copyright © 2020 SoftwareBrothers.co. It is free software, and may be redistributed under the terms specified in the [LICENSE](LICENSE.md) file.
+AdminJS is Copyright © 2022 SoftwareBrothers.co. It is free software, and may be redistributed under the terms specified in the [LICENSE](LICENSE.md) file.
 
 ## About SoftwareBrothers.co
 
