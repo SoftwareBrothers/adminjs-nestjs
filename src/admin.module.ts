@@ -8,6 +8,7 @@ import { AbstractLoader } from './loaders/abstract.loader'
 import { AdminModuleOptions } from './interfaces/admin-module-options.interface'
 import { AdminModuleFactory } from './interfaces/admin-module-factory.interface'
 import { CustomLoader } from './interfaces/custom-loader.interface'
+import AdminResourceService from './admin-resource.service'
 
 /**
  * Nest module which is responsible for an AdminJS integration
@@ -126,7 +127,13 @@ export class AdminModule implements OnModuleInit {
       return;
     }
 
-    const admin = new AdminJS(this.adminModuleOptions.adminJsOptions);
+    const forFeatureResources = AdminResourceService.getResources()
+
+    const adminJSOptions = forFeatureResources.length > 0
+      ? { ...this.adminModuleOptions.adminJsOptions, resources: forFeatureResources }
+      : this.adminModuleOptions.adminJsOptions
+
+    const admin = new AdminJS(adminJSOptions);
 
     const { httpAdapter } = this.httpAdapterHost;
     this.loader.register(admin, httpAdapter, { 
