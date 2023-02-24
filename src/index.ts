@@ -219,3 +219,5 @@ export * from './interfaces/admin-module-factory.interface';
 export * from './interfaces/admin-module-options.interface';
 export * from './interfaces/custom-loader.interface';
 export * from './loaders/abstract.loader';
+export * from './loaders/express.loader';
+export * from './loaders/noop.loader';
