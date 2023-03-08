@@ -1,7 +1,7 @@
 import { AdminJSOptions, CurrentAdmin } from 'adminjs';
 import { SessionOptions } from 'express-session';
 
-import { ExpressFormidableOptions } from './express-formidable-options.interface';
+import { ExpressFormidableOptions } from './express-formidable-options.interface.js';
 
 /**
  * Options passed to nestjs module

@@ -210,14 +210,14 @@
  * ## Example
  * There is a working example [here](https://github.com/SoftwareBrothers/adminjs-nestjs/tree/master/example-app)
  */
-import * as NestJSPlugin from './admin.module'
+import * as NestJSPlugin from './admin.module.js';
 
-export * from './admin.module';
-export * from './admin-resource.module';
+export * from './admin-resource.module.js';
+export * from './admin.module.js';
+export * from './interfaces/admin-module-factory.interface.js';
+export * from './interfaces/admin-module-options.interface.js';
+export * from './interfaces/custom-loader.interface.js';
+export * from './loaders/abstract.loader.js';
+export * from './loaders/express.loader.js';
+export * from './loaders/noop.loader.js';
 export default NestJSPlugin;
-export * from './interfaces/admin-module-factory.interface';
-export * from './interfaces/admin-module-options.interface';
-export * from './interfaces/custom-loader.interface';
-export * from './loaders/abstract.loader';
-export * from './loaders/express.loader';
-export * from './loaders/noop.loader';

@@ -1,8 +1,8 @@
-import AdminJS from 'adminjs';
 import { Injectable } from '@nestjs/common';
 import { AbstractHttpAdapter } from '@nestjs/core';
+import AdminJS from 'adminjs';
 
-import { AdminModuleOptions } from '../interfaces/admin-module-options.interface';
+import { AdminModuleOptions } from '../interfaces/admin-module-options.interface.js';
 
 @Injectable()
 export abstract class AbstractLoader {

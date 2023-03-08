@@ -5,8 +5,8 @@ import { AdminSchema } from './admin-model';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Admin', schema: AdminSchema }]),
+  MongooseModule.forFeature([{ name: 'Admin', schema: AdminSchema }]),
   ],
   exports: [MongooseModule],
-})
+  })
 export class MongooseSchemasModule {}

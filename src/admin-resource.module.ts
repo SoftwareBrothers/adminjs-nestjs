@@ -1,7 +1,7 @@
-import { Module, DynamicModule } from '@nestjs/common';
-import { ResourceWithOptions } from 'adminjs'
+import { DynamicModule, Module } from '@nestjs/common';
+import { ResourceWithOptions } from 'adminjs';
 
-import AdminResourceService from './admin-resource.service';
+import AdminResourceService from './admin-resource.service.js';
 
 /**
  * Nest module which is responsible for admin resources
@@ -37,7 +37,7 @@ export class AdminResourceModule {
    */
   public static forFeature(resources: (ResourceWithOptions | any)[]): DynamicModule {
     AdminResourceService.add(resources)
-    
+
     return {
       module: AdminResourceModule,
     };

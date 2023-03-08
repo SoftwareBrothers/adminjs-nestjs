@@ -6,6 +6,10 @@
     "jest": true
   },
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 20,
+    "sourceType": "module"
+  },
   "plugins": [
     "@typescript-eslint",
     "prefer-arrow",
