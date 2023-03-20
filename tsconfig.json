@@ -17,7 +17,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": "./",
     "incremental": true
   },
