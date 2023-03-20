@@ -14,7 +14,7 @@
   "scripts": {
     "release": "semantic-release",
     "build": "tsc",
-    "lint": "eslint './src/**/*' './example-app/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock' --ignore-pattern '*.yml'",
+    "lint": "eslint './src/**/*' --ignore-pattern '*.json' --ignore-pattern 'yarn.lock' --ignore-pattern '*.yml'",
     "check:all": "yarn lint && yarn build"
   },
   "husky": {
@@ -36,11 +36,10 @@
     "@semantic-release/git": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "adminjs": "^6.0.0",
+    "adminjs": "^7.0.0-beta-v7.1",
     "eslint": "^8.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-jsdoc": "^40.1.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",

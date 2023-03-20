@@ -2,26 +2,23 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 20,
+    "ecmaVersion": 2020,
     "sourceType": "module"
   },
   "plugins": [
     "@typescript-eslint",
     "prefer-arrow",
     "jsdoc",
-    "jest",
     "import"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:jest/recommended"
+    "plugin:@typescript-eslint/recommended"
   ],
   "settings": {
     "import/core-modules": [
@@ -116,12 +113,6 @@
       "always"
     ],
     "guard-for-in": "error",
-    "jest/expect-expect": [
-      "error",
-      {
-        "assertFunctionNames": ["expect", "request.*.expect", "request.**.expect", "request.*.expect*"]
-      }
-    ],
     "max-classes-per-file": "off",
     "new-parens": "error",
     "no-bitwise": "error",
@@ -207,14 +198,6 @@
       ],
       "rules": {
         "spaced-comment": "off"
-      }
-    },
-    {
-      "files": [
-        "*/cypress/**/*.spec.ts"
-      ],
-      "rules": {
-        "jest/expect-expect": "off"
       }
     }
   ]
