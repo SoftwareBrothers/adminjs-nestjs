@@ -16,32 +16,32 @@ AdminJS.registerAdapter(AdminJSMongoose);
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/nest'),
-    AdminModule.createAdminAsync({
-      imports: [
-        MongooseSchemasModule,
-      ],
-      inject: [
-        getModelToken('Admin'),
-      ],
-      useFactory: (adminModel: Model<Admin>) => ({
-        adminJsOptions: {
-          rootPath: '/admin',
-          resources: [
-            { resource: adminModel },
-          ],
-        },
-        auth: {
-          authenticate: async (email, password) => Promise.resolve({ email: 'test' }),
-          cookieName: 'test',
-          cookiePassword: 'testPass',
-        },
-      }),
-      customLoader: ExpressCustomLoader,
-    }),
+  MongooseModule.forRoot('mongodb://localhost:27017/nest'),
+  AdminModule.createAdminAsync({
+    imports: [
     MongooseSchemasModule,
+    ],
+    inject: [
+    getModelToken('Admin'),
+    ],
+    useFactory: (adminModel: Model<Admin>) => ({
+      adminJsOptions: {
+      rootPath: '/admin',
+      resources: [
+      { resource: adminModel },
+      ],
+      },
+      auth: {
+      authenticate: async (email, password) => Promise.resolve({ email: 'test' }),
+      cookieName: 'test',
+      cookiePassword: 'testPass',
+      },
+      }),
+    customLoader: ExpressCustomLoader,
+    }),
+  MongooseSchemasModule,
   ],
   controllers: [AppController],
   providers: [AppService],
-})
+  })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Type } from '@nestjs/common';
 
-import { AbstractLoader } from '../loaders/abstract.loader';
+import { AbstractLoader } from '../loaders/abstract.loader.js';
 
 export type CustomLoader = {
   /**

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import AdminJS from 'adminjs';
 import { Injectable } from '@nestjs/common';
 import { AbstractHttpAdapter } from '@nestjs/core';
+import AdminJS from 'adminjs';
 
-import { AdminModuleOptions } from '../interfaces/admin-module-options.interface';
+import { AdminModuleOptions } from '../interfaces/admin-module-options.interface.js';
 
-import { AbstractLoader } from './abstract.loader';
+import { AbstractLoader } from './abstract.loader.js';
 
 @Injectable()
 export class NoopLoader extends AbstractLoader {
@@ -14,5 +14,5 @@ export class NoopLoader extends AbstractLoader {
     admin: AdminJS,
     httpAdapter: AbstractHttpAdapter,
     options: AdminModuleOptions,
-  ) {}
+  ) { }
 }

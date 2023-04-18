@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
-import AdminJS from 'adminjs';
 import { Injectable } from '@nestjs/common';
+import { loadPackage } from '@nestjs/common/utils/load-package.util.js';
 import { AbstractHttpAdapter } from '@nestjs/core';
-import { loadPackage } from '@nestjs/common/utils/load-package.util';
+import AdminJS from 'adminjs';
 
-import { AdminModuleOptions } from '../interfaces/admin-module-options.interface';
+import { AdminModuleOptions } from '../interfaces/admin-module-options.interface.js';
 
-import { AbstractLoader } from './abstract.loader';
+import { AbstractLoader } from './abstract.loader.js';
 
 @Injectable()
 export class ExpressLoader extends AbstractLoader {
@@ -19,7 +19,7 @@ export class ExpressLoader extends AbstractLoader {
 
     loadPackage('express', '@adminjs/nestjs');
     const adminJsExpressjs = loadPackage('@adminjs/express', '@adminjs/nestjs', () =>
-      require('@adminjs/express')
+      require('@adminjs/express'),
     );
     loadPackage('express-formidable', '@adminjs/nestjs');
 
@@ -28,7 +28,7 @@ export class ExpressLoader extends AbstractLoader {
     if ('auth' in options) {
       loadPackage('express-session', '@adminjs/nestjs');
       router = adminJsExpressjs.buildAuthenticatedRouter(
-        admin, options.auth, undefined, options.sessionOptions, options.formidableOptions
+        admin, options.auth, undefined, options.sessionOptions, options.formidableOptions,
       );
     } else {
       router = adminJsExpressjs.buildRouter(admin, undefined, options.formidableOptions);
@@ -54,21 +54,21 @@ export class ExpressLoader extends AbstractLoader {
     // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
     if (app && app._router && app._router.stack) {
       const jsonParserIndex = app._router.stack.findIndex(
-        (layer: { name: string }) => layer.name === 'jsonParser'
+        (layer: { name: string }) => layer.name === 'jsonParser',
       );
       if (jsonParserIndex >= 0) {
         jsonParser = app._router.stack.splice(jsonParserIndex, 1);
       }
 
       const urlencodedParserIndex = app._router.stack.findIndex(
-        (layer: { name: string }) => layer.name === 'urlencodedParser'
+        (layer: { name: string }) => layer.name === 'urlencodedParser',
       );
       if (urlencodedParserIndex >= 0) {
         urlencodedParser = app._router.stack.splice(urlencodedParserIndex, 1);
       }
 
       const adminIndex = app._router.stack.findIndex(
-        (layer: { name: string }) => layer.name === 'admin'
+        (layer: { name: string }) => layer.name === 'admin',
       );
       if (adminIndex >= 0) {
         admin = app._router.stack.splice(adminIndex, 1)
