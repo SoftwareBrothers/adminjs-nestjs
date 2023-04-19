@@ -42,6 +42,11 @@
     styled-system "^5.1.5"
     text-mask-addons "^3.8.0"
 
+"@adminjs/express@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@adminjs/express/-/express-6.0.0.tgz#9ad77dda79034682aee22f746f9b9460d5e5739a"
+  integrity sha512-TIylSszG5yUp+uHFYWWCrlztViiR05KM7suDo4SWd4UezZYc0mwNgfYPsnEmKkf5VFMEiCtYqhdCt38OxUPn/g==
+
 "@ampproject/remapping@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"

@@ -10,7 +10,7 @@ import { AbstractLoader } from './abstract.loader.js';
 
 @Injectable()
 export class ExpressLoader extends AbstractLoader {
-  public register(
+  public async register(
     admin: AdminJS,
     httpAdapter: AbstractHttpAdapter,
     options: AdminModuleOptions,
@@ -18,20 +18,18 @@ export class ExpressLoader extends AbstractLoader {
     const app = httpAdapter.getInstance();
 
     loadPackage('express', '@adminjs/nestjs');
-    const adminJsExpressjs = loadPackage('@adminjs/express', '@adminjs/nestjs', () =>
-      require('@adminjs/express'),
-    );
+    const adminJsExpressjs = await import('@adminjs/express');
     loadPackage('express-formidable', '@adminjs/nestjs');
 
     let router;
 
-    if ('auth' in options) {
+    if (options.auth) {
       loadPackage('express-session', '@adminjs/nestjs');
-      router = adminJsExpressjs.buildAuthenticatedRouter(
+      router = adminJsExpressjs.default.buildAuthenticatedRouter(
         admin, options.auth, undefined, options.sessionOptions, options.formidableOptions,
       );
     } else {
-      router = adminJsExpressjs.buildRouter(admin, undefined, options.formidableOptions);
+      router = adminJsExpressjs.default.buildRouter(admin, undefined, options.formidableOptions);
     }
 
     // This named function is there on purpose. 
