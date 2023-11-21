@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { loadPackage } from '@nestjs/common/utils/load-package.util.js';
 import { AbstractHttpAdapter } from '@nestjs/core';
-import AdminJS from 'adminjs';
+import type AdminJS from 'adminjs';
 
 import { AdminModuleOptions } from '../interfaces/admin-module-options.interface.js';
 
@@ -26,7 +26,7 @@ export class ExpressLoader extends AbstractLoader {
     if (options.auth) {
       loadPackage('express-session', '@adminjs/nestjs');
       router = adminJsExpressjs.default.buildAuthenticatedRouter(
-        admin, options.auth, undefined, options.sessionOptions, options.formidableOptions,
+        admin, options.auth, undefined, options.sessionOptions as any, options.formidableOptions,
       );
     } else {
       router = adminJsExpressjs.default.buildRouter(admin, undefined, options.formidableOptions);
