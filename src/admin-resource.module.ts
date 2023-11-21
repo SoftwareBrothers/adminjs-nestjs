@@ -1,5 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { ResourceWithOptions } from 'adminjs';
+import { type ResourceWithOptions } from 'adminjs';
 
 import AdminResourceService from './admin-resource.service.js';
 

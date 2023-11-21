@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ResourceWithOptions } from 'adminjs';
+import { type ResourceWithOptions } from 'adminjs';
 
 @Injectable()
 class AdminResourceService {

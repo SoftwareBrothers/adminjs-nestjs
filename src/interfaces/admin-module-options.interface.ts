@@ -1,4 +1,4 @@
-import { AdminJSOptions, CurrentAdmin } from 'adminjs';
+import type { AdminJSOptions, BaseAuthProvider, CurrentAdmin } from 'adminjs';
 import { SessionOptions } from 'express-session';
 
 import { ExpressFormidableOptions } from './express-formidable-options.interface.js';
@@ -21,9 +21,10 @@ export type AdminModuleOptions = {
     /**
      * verifies if given credentials are valid, therefore if user has access to Admin Panel
      */
-    authenticate: (email: string, password: string) => Promise<CurrentAdmin | null>,
+    authenticate?: (email: string, password: string, ctx?: any) => Promise<CurrentAdmin | null>,
     cookiePassword: string,
     cookieName: string,
+    provider?: BaseAuthProvider,
   }
   /**
    * Options passed to express formidable (used only by AdminJS express module)

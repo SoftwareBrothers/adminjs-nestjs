@@ -1,6 +1,5 @@
 import { DynamicModule, Inject, Module, OnModuleInit } from '@nestjs/common'
 import { HttpAdapterHost } from '@nestjs/core'
-import AdminJS from 'adminjs'
 
 import AdminResourceService from './admin-resource.service.js'
 import { AdminModuleFactory } from './interfaces/admin-module-factory.interface.js'
@@ -122,10 +121,12 @@ export class AdminModule implements OnModuleInit {
   /**
    * Applies given options to AdminJS and initializes it
    */
-  public onModuleInit() {
+  public async onModuleInit() {
     if ('shouldBeInitialized' in this.adminModuleOptions && !this.adminModuleOptions.shouldBeInitialized) {
       return;
     }
+
+    const { default: AdminJS } = await import('adminjs');
 
     const forFeatureResources = AdminResourceService.getResources()
 

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Injectable } from '@nestjs/common';
 import { AbstractHttpAdapter } from '@nestjs/core';
-import AdminJS from 'adminjs';
+import type AdminJS from 'adminjs';
 
 import { AdminModuleOptions } from '../interfaces/admin-module-options.interface.js';
 
