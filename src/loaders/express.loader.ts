@@ -26,13 +26,21 @@ export class ExpressLoader extends AbstractLoader {
     if (options.auth) {
       loadPackage('express-session', '@adminjs/nestjs');
       router = adminJsExpressjs.default.buildAuthenticatedRouter(
-        admin, options.auth, undefined, options.sessionOptions as any, options.formidableOptions,
+        admin,
+        options.auth,
+        undefined,
+        options.sessionOptions as any,
+        options.formidableOptions,
       );
     } else {
-      router = adminJsExpressjs.default.buildRouter(admin, undefined, options.formidableOptions);
+      router = adminJsExpressjs.default.buildRouter(
+        admin,
+        undefined,
+        options.formidableOptions,
+      );
     }
 
-    // This named function is there on purpose. 
+    // This named function is there on purpose.
     // It names layer in main router with the name of the function, which helps localize
     // admin layer in reorderRoutes() step.
     // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -69,20 +77,20 @@ export class ExpressLoader extends AbstractLoader {
         (layer: { name: string }) => layer.name === 'admin',
       );
       if (adminIndex >= 0) {
-        admin = app._router.stack.splice(adminIndex, 1)
+        admin = app._router.stack.splice(adminIndex, 1);
       }
 
       // if adminjs-nestjs didn't reorder the middleware
       // the body parser would have come after corsMiddleware
       const corsIndex = app._router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'corsMiddleware',
-      )
+      );
 
       // in other case if there is no corsIndex we go after expressInit, because right after that
       // there are nest endpoints.
       const expressInitIndex = app._router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'expressInit',
-      )
+      );
 
       const initIndex = (corsIndex >= 0 ? corsIndex : expressInitIndex) + 1;
 
@@ -92,7 +100,7 @@ export class ExpressLoader extends AbstractLoader {
         ...admin,
         ...jsonParser,
         ...urlencodedParser,
-      )
+      );
     }
   }
 }
