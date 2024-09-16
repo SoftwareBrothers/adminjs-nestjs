@@ -5,6 +5,7 @@
   "exports": {
     ".": {
       "import": "./build/index.js",
+      "require": "./build/index.js",
       "types": "./types/index.d.ts"
     }
   },
