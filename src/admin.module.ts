@@ -138,7 +138,7 @@ export class AdminModule implements OnModuleInit {
     admin.watch();
 
     const { httpAdapter } = this.httpAdapterHost;
-    this.loader.register(admin, httpAdapter, {
+    await this.loader.register(admin, httpAdapter, {
       ...this.adminModuleOptions,
       adminJsOptions: admin.options,
     });
