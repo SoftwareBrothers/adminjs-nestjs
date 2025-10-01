@@ -58,43 +58,43 @@ export class ExpressLoader extends AbstractLoader {
     // Nestjs uses bodyParser under the hood which is in conflict with adminjs setup.
     // Due to adminjs-expressjs usage of formidable we have to move body parser in layer tree after adminjs init.
     // Notice! This is not documented feature of express, so this may change in the future. We have to keep an eye on it.
-    if (app && app._router && app._router.stack) {
-      const jsonParserIndex = app._router.stack.findIndex(
+    if (app && app.router && app.router.stack) {
+      const jsonParserIndex = app.router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'jsonParser',
       );
       if (jsonParserIndex >= 0) {
-        jsonParser = app._router.stack.splice(jsonParserIndex, 1);
+        jsonParser = app.router.stack.splice(jsonParserIndex, 1);
       }
 
-      const urlencodedParserIndex = app._router.stack.findIndex(
+      const urlencodedParserIndex = app.router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'urlencodedParser',
       );
       if (urlencodedParserIndex >= 0) {
-        urlencodedParser = app._router.stack.splice(urlencodedParserIndex, 1);
+        urlencodedParser = app.router.stack.splice(urlencodedParserIndex, 1);
       }
 
-      const adminIndex = app._router.stack.findIndex(
+      const adminIndex = app.router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'admin',
       );
       if (adminIndex >= 0) {
-        admin = app._router.stack.splice(adminIndex, 1);
+        admin = app.router.stack.splice(adminIndex, 1);
       }
 
       // if adminjs-nestjs didn't reorder the middleware
       // the body parser would have come after corsMiddleware
-      const corsIndex = app._router.stack.findIndex(
+      const corsIndex = app.router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'corsMiddleware',
       );
 
       // in other case if there is no corsIndex we go after expressInit, because right after that
       // there are nest endpoints.
-      const expressInitIndex = app._router.stack.findIndex(
+      const expressInitIndex = app.router.stack.findIndex(
         (layer: { name: string }) => layer.name === 'expressInit',
       );
 
       const initIndex = (corsIndex >= 0 ? corsIndex : expressInitIndex) + 1;
 
-      app._router.stack.splice(
+      app.router.stack.splice(
         initIndex,
         0,
         ...admin,
